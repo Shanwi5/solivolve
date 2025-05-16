@@ -20,6 +20,7 @@ import {
   Cell,
   Legend
 } from "recharts";
+import { SolarResults, SolarInputs } from "@/utils/solarCalculator";
 
 interface SolarHeatmapProps {
   roofArea: number;
@@ -112,6 +113,38 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
     }
   };
 
+  // Calculate average annual energy from heatmap data
+  const calculateAverageAnnualEnergy = () => {
+    if (data.length === 0) return 0;
+    const totalEnergy = data.reduce((sum, point) => sum + (point.annualEnergy || 0), 0);
+    return totalEnergy / data.length;
+  };
+
+  // Create SolarResults object
+  const getSolarResults = (): SolarResults => {
+    const avgAnnualEnergy = calculateAverageAnnualEnergy();
+    return {
+      systemSize: roofArea * 0.15, // Assuming 15% of roof area for panels
+      panelsRequired: Math.floor(roofArea * 0.15 / 1.6), // Assuming 1.6m² per panel
+      annualEnergyProduction: avgAnnualEnergy,
+      monthlySavings: avgAnnualEnergy * 0.15 / 12, // Assuming $0.15 per kWh
+      paybackPeriod: 8, // Example value
+      co2Reduction: avgAnnualEnergy * 0.5, // 0.5 kg CO2 per kWh
+      lifetimeSavings: avgAnnualEnergy * 0.15 * 25 // 25 years lifetime
+    };
+  };
+
+  // Create SolarInputs object
+  const getSolarInputs = (): SolarInputs => {
+    return {
+      location: "Default Location",
+      roofArea: roofArea,
+      electricityUsage: 1000, // Example value
+      roofAngle: 30, // Example value
+      shading: 0 // Example value
+    };
+  };
+
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -148,23 +181,34 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
             }}
           >
             {data.map((point, idx) => (
-              <div
-                key={idx}
-                title={`(${point.x}, ${point.y}) = ${point.value.toFixed(1)}%`}
-                style={{
-                  backgroundColor: getColor(point.value),
-                  width: "40px",
-                  height: "40px",
-                  textAlign: "center",
-                  fontSize: "20px",
-                  color: "#000",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                {Math.round(point.value)}
-              </div>
+              <div 
+              className="grid mt-4"
+              style={{
+                display: "grid",
+                gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
+                gridAutoRows: "30px", // increased from 20px
+                gap: "3px"
+              }}
+            >
+              {data.map((point, idx) => (
+                <div
+                  key={idx}
+                  title={`(${point.x}, ${point.y}) = ${point.value.toFixed(1)}%`}
+                  style={{
+                    backgroundColor: getColor(point.value),
+                    width: "100%",
+                    height: "100%",
+                    textAlign: "center",
+                    fontSize: "12px", // slightly larger
+                    color: "#000",
+                    borderRadius: "2px"
+                  }}
+                >
+                  {Math.round(point.value)}
+                </div>
+              ))}
+            </div>
+    
             ))}
           </div>
         </div>
@@ -192,7 +236,10 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
           </div>
         </div>
         <div className="mt-4">
-          <DownloadPDF data={data} roofArea={roofArea} />
+          <DownloadPDF 
+            results={getSolarResults()} 
+            formData={getSolarInputs()} 
+          />
         </div>
       </CardContent>
     </Card>
