@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
@@ -16,6 +15,10 @@ const languages = [
   { value: 'es', label: 'Español' },
   { value: 'fr', label: 'Français' },
   { value: 'de', label: 'Deutsch' },
+  { value: 'hi', label: 'हिंदी' },
+  { value: 'ta', label: 'தமிழ்' },
+  { value: 'bn', label: 'বাংলা' },
+  { value: 'te', label: 'తెలుగు' },
 ];
 
 const LanguageSwitcher = () => {
@@ -52,3 +55,4 @@ const LanguageSwitcher = () => {
 };
 
 export default LanguageSwitcher;
+
