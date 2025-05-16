@@ -139,9 +139,9 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
             className="grid bg-white"
             style={{
               display: "grid",
-              gridTemplateColumns: `repeat(${Math.ceil(Math.sqrt(data.length))}, 20px)`,
-              gridAutoRows: "20px",
-              gap: "2px",
+              gridTemplateColumns: `repeat(${Math.ceil(Math.sqrt(data.length))}, 40px)`,
+              gridAutoRows: "40px",
+              gap: "4px",
               width: "fit-content",
               margin: "0 auto",
             }}
@@ -152,10 +152,10 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
                 title={`(${point.x}, ${point.y}) = ${point.value.toFixed(1)}%`}
                 style={{
                   backgroundColor: getColor(point.value),
-                  width: "20px",
-                  height: "20px",
+                  width: "40px",
+                  height: "40px",
                   textAlign: "center",
-                  fontSize: "10px",
+                  fontSize: "20px",
                   color: "#000",
                   display: "flex",
                   alignItems: "center",
@@ -196,5 +196,3 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
 };
 
 export default SolarHeatmap;
-
-
