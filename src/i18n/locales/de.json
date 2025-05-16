@@ -1,0 +1,74 @@
+
+{
+  "common": {
+    "getStarted": "Loslegen",
+    "learnMore": "Mehr Erfahren"
+  },
+  "navbar": {
+    "home": "Startseite",
+    "howItWorks": "Wie Es Funktioniert",
+    "benefits": "Vorteile",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Berechnen Sie das",
+    "titleHighlight": "Solarenergiepotenzial Ihres Daches",
+    "description": "Laden Sie Ihr Dachbild hoch, zeichnen Sie die nutzbare Fläche ein und sehen Sie sofort Ihr Solarenergieerzeugungspotenzial. Kein GPS oder Standortzugriff erforderlich."
+  },
+  "features": {
+    "title": "Leistungsstarke Funktionen",
+    "upload": {
+      "title": "Einfacher Upload",
+      "description": "Laden Sie einfach einen Screenshot oder ein Foto Ihres Daches von Google Maps oder einer anderen Quelle hoch."
+    },
+    "draw": {
+      "title": "Zeichnen Sie Ihren Bereich",
+      "description": "Verwenden Sie unser interaktives Zeichenwerkzeug, um den nutzbaren Bereich Ihres Daches für Solarmodule zu umreißen."
+    },
+    "analysis": {
+      "title": "Sofortige Analyse",
+      "description": "Erhalten Sie detaillierte Schätzungen zur Energieproduktion, zu Einsparungen und zur Umweltauswirkung."
+    }
+  },
+  "estimator": {
+    "title": "Solarpotenzialbewertung",
+    "description": "Laden Sie ein Dachbild hoch und zeichnen Sie den nutzbaren Bereich, um sofortige Schätzungen Ihres Solarenergiepotenzials zu erhalten."
+  },
+  "cta": {
+    "title": "Bereit, Solarenergie zu nutzen?",
+    "description": "Beginnen Sie heute Ihre Solarreise, indem Sie das Potenzial Ihres Daches mit unserem interaktiven Tool schätzen lassen.",
+    "button": "Holen Sie sich Ihre Solar-Schätzung"
+  },
+  "footer": {
+    "description": "Berechnen Sie das Solarpotenzial Ihres Daches mit unserem interaktiven Tool. Treffen Sie fundierte Entscheidungen über die Installation von Solarmodulen und beginnen Sie zu sparen.",
+    "quickLinks": "Schnelllinks",
+    "contact": "Kontakt",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "notFound": {
+    "title": "Seite Nicht Gefunden",
+    "description": "Die Seite, die Sie suchen, existiert nicht oder wurde verschoben.",
+    "button": "Zurück zur Startseite"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie Uns",
+    "description": "Haben Sie Fragen zu unserem Solar-Schätzwerkzeug? Wir sind hier, um zu helfen! Kontaktieren Sie unser Team für Unterstützung oder weitere Informationen.",
+    "getInTouch": "Kontakt Aufnehmen",
+    "getInTouchDescription": "Füllen Sie das Formular aus, und unser Team wird sich so schnell wie möglich bei Ihnen melden. Wir freuen uns, von Ihnen zu hören und alle Fragen zu beantworten, die Sie zur Solarenergieabschätzung haben könnten.",
+    "form": {
+      "name": "Name",
+      "email": "E-Mail",
+      "message": "Nachricht",
+      "send": "Nachricht Senden",
+      "sending": "Wird gesendet..."
+    },
+    "faq": "Häufig Gestellte Fragen",
+    "faqDescription": "Brauchen Sie eine schnelle Antwort? Schauen Sie auf unserer FAQ-Seite nach häufig gestellten Fragen zu unserem Solar-Schätzwerkzeug."
+  },
+  "language": {
+    "en": "Englisch",
+    "es": "Spanisch",
+    "fr": "Französisch",
+    "de": "Deutsch"
+  }
+}

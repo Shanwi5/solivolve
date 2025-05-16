@@ -1,0 +1,74 @@
+
+{
+  "common": {
+    "getStarted": "Commencer",
+    "learnMore": "En Savoir Plus"
+  },
+  "navbar": {
+    "home": "Accueil",
+    "howItWorks": "Comment Ça Marche",
+    "benefits": "Avantages",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Calculez le Potentiel",
+    "titleHighlight": "d'Énergie Solaire de votre Toit",
+    "description": "Téléchargez l'image de votre toit, dessinez la zone utilisable, et voyez instantanément votre potentiel de production d'énergie solaire. Pas de GPS ni d'accès à la localisation requis."
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes",
+    "upload": {
+      "title": "Téléchargement Facile",
+      "description": "Téléchargez simplement une capture d'écran ou une photo de votre toit depuis Google Maps ou toute autre source."
+    },
+    "draw": {
+      "title": "Dessinez Votre Zone",
+      "description": "Utilisez notre outil de dessin interactif pour délimiter la zone utilisable de votre toit pour les panneaux solaires."
+    },
+    "analysis": {
+      "title": "Analyse Instantanée",
+      "description": "Obtenez des estimations détaillées sur la production d'énergie, les économies et l'impact environnemental."
+    }
+  },
+  "estimator": {
+    "title": "Estimateur de Potentiel Solaire",
+    "description": "Téléchargez une image de toit et dessinez la zone utilisable pour obtenir des estimations instantanées de votre potentiel d'énergie solaire."
+  },
+  "cta": {
+    "title": "Prêt à Exploiter l'Énergie Solaire ?",
+    "description": "Commencez votre parcours solaire aujourd'hui en estimant le potentiel de votre toit avec notre outil interactif.",
+    "button": "Obtenez Votre Estimation Solaire"
+  },
+  "footer": {
+    "description": "Calculez le potentiel solaire de votre toit avec notre outil interactif. Prenez des décisions éclairées sur l'installation de panneaux solaires et commencez à économiser.",
+    "quickLinks": "Liens Rapides",
+    "contact": "Contact",
+    "rights": "Tous droits réservés."
+  },
+  "notFound": {
+    "title": "Page Non Trouvée",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "button": "Retour à l'Accueil"
+  },
+  "contact": {
+    "title": "Contactez-Nous",
+    "description": "Vous avez des questions sur notre estimateur solaire ? Nous sommes là pour vous aider ! Contactez notre équipe pour obtenir de l'aide ou plus d'informations.",
+    "getInTouch": "Entrer en Contact",
+    "getInTouchDescription": "Remplissez le formulaire et notre équipe vous recontactera dès que possible. Nous sommes ravis de vous entendre et de répondre à toutes vos questions sur l'estimation de l'énergie solaire.",
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "message": "Message",
+      "send": "Envoyer le Message",
+      "sending": "Envoi en cours..."
+    },
+    "faq": "Questions Fréquemment Posées",
+    "faqDescription": "Besoin d'une réponse rapide ? Consultez notre page FAQ pour les questions courantes sur notre outil d'estimation solaire."
+  },
+  "language": {
+    "en": "Anglais",
+    "es": "Espagnol",
+    "fr": "Français",
+    "de": "Allemand"
+  }
+}

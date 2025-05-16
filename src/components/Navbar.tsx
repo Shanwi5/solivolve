@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <nav className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
@@ -20,20 +23,22 @@ const Navbar = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex md:items-center">
             <div className="ml-10 flex items-center space-x-4">
-              <Link to="/" className="px-3 py-2 text-sm font-medium hover:text-solar-blue">Home</Link>
-              <Link to="/how-it-works" className="px-3 py-2 text-sm font-medium hover:text-solar-blue">How It Works</Link>
-              <Link to="/benefits" className="px-3 py-2 text-sm font-medium hover:text-solar-blue">Benefits</Link>
-              <Link to="/contact" className="px-3 py-2 text-sm font-medium hover:text-solar-blue">Contact</Link>
+              <Link to="/" className="px-3 py-2 text-sm font-medium hover:text-solar-blue">{t('navbar.home')}</Link>
+              <Link to="/how-it-works" className="px-3 py-2 text-sm font-medium hover:text-solar-blue">{t('navbar.howItWorks')}</Link>
+              <Link to="/benefits" className="px-3 py-2 text-sm font-medium hover:text-solar-blue">{t('navbar.benefits')}</Link>
+              <Link to="/contact" className="px-3 py-2 text-sm font-medium hover:text-solar-blue">{t('navbar.contact')}</Link>
               <Button variant="default" className="bg-solar-blue hover:bg-solar-darkBlue text-white">
-                Get Started
+                {t('common.getStarted')}
               </Button>
+              <LanguageSwitcher />
             </div>
           </div>
           
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-2">
+            <LanguageSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-solar-blue hover:bg-gray-100"
@@ -73,35 +78,35 @@ const Navbar = () => {
             className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 hover:text-solar-blue"
             onClick={() => setIsOpen(false)}
           >
-            Home
+            {t('navbar.home')}
           </Link>
           <Link 
             to="/how-it-works"
             className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 hover:text-solar-blue"
             onClick={() => setIsOpen(false)}
           >
-            How It Works
+            {t('navbar.howItWorks')}
           </Link>
           <Link 
             to="/benefits"
             className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 hover:text-solar-blue"
             onClick={() => setIsOpen(false)}
           >
-            Benefits
+            {t('navbar.benefits')}
           </Link>
           <Link 
             to="/contact"
             className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 hover:text-solar-blue"
             onClick={() => setIsOpen(false)}
           >
-            Contact
+            {t('navbar.contact')}
           </Link>
           <Button 
             variant="default" 
             className="w-full bg-solar-blue hover:bg-solar-darkBlue text-white mt-2"
             onClick={() => setIsOpen(false)}
           >
-            Get Started
+            {t('common.getStarted')}
           </Button>
         </div>
       </div>

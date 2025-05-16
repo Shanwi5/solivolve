@@ -1,0 +1,74 @@
+
+{
+  "common": {
+    "getStarted": "Comenzar",
+    "learnMore": "Aprender Más"
+  },
+  "navbar": {
+    "home": "Inicio",
+    "howItWorks": "Cómo Funciona",
+    "benefits": "Beneficios",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Calcula el Potencial",
+    "titleHighlight": "de Energía Solar de tu Tejado",
+    "description": "Sube la imagen de tu tejado, dibuja el área utilizable, y visualiza instantáneamente tu potencial de generación de energía solar. No se requiere GPS ni acceso a la ubicación."
+  },
+  "features": {
+    "title": "Características Potentes",
+    "upload": {
+      "title": "Subida Fácil",
+      "description": "Simplemente sube una captura de pantalla o foto de tu tejado desde Google Maps o cualquier fuente."
+    },
+    "draw": {
+      "title": "Dibuja Tu Área",
+      "description": "Usa nuestra herramienta de dibujo interactiva para delinear el área utilizable de tu tejado para paneles solares."
+    },
+    "analysis": {
+      "title": "Análisis Instantáneo",
+      "description": "Obtén estimaciones detalladas sobre producción de energía, ahorros e impacto ambiental."
+    }
+  },
+  "estimator": {
+    "title": "Estimador de Potencial Solar",
+    "description": "Sube una imagen de tu tejado y dibuja el área utilizable para obtener estimaciones instantáneas de tu potencial de energía solar."
+  },
+  "cta": {
+    "title": "¿Listo para Aprovechar la Energía Solar?",
+    "description": "Comienza tu viaje solar hoy estimando el potencial de tu tejado con nuestra herramienta interactiva.",
+    "button": "Obtén tu Estimación Solar"
+  },
+  "footer": {
+    "description": "Calcula el potencial solar de tu tejado con nuestra herramienta interactiva. Toma decisiones informadas sobre la instalación de paneles solares y comienza a ahorrar.",
+    "quickLinks": "Enlaces Rápidos",
+    "contact": "Contacto",
+    "rights": "Todos los derechos reservados."
+  },
+  "notFound": {
+    "title": "Página No Encontrada",
+    "description": "La página que estás buscando no existe o ha sido movida.",
+    "button": "Volver al Inicio"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "description": "¿Tienes preguntas sobre nuestro estimador solar? ¡Estamos aquí para ayudar! Ponte en contacto con nuestro equipo para soporte o más información.",
+    "getInTouch": "Ponte en Contacto",
+    "getInTouchDescription": "Completa el formulario y nuestro equipo se pondrá en contacto contigo lo antes posible. Estamos emocionados de escucharte y responder cualquier pregunta que puedas tener sobre la estimación de energía solar.",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo Electrónico",
+      "message": "Mensaje",
+      "send": "Enviar Mensaje",
+      "sending": "Enviando..."
+    },
+    "faq": "Preguntas Frecuentes",
+    "faqDescription": "¿Necesitas una respuesta rápida? Consulta nuestra página de preguntas frecuentes para conocer las preguntas comunes sobre nuestra herramienta de estimación solar."
+  },
+  "language": {
+    "en": "Inglés",
+    "es": "Español",
+    "fr": "Francés",
+    "de": "Alemán"
+  }
+}

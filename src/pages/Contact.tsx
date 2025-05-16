@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -15,6 +16,7 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,9 +47,9 @@ const Contact = () => {
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('contact.title')}</h1>
               <p className="text-lg text-gray-600 mb-8">
-                Have questions about our solar estimator? We're here to help! Get in touch with our team for support or more information.
+                {t('contact.description')}
               </p>
             </div>
           </div>
@@ -59,9 +61,9 @@ const Contact = () => {
             <div className="max-w-5xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12">
                 <div>
-                  <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
+                  <h2 className="text-2xl font-bold mb-4">{t('contact.getInTouch')}</h2>
                   <p className="text-gray-600 mb-8">
-                    Fill out the form and our team will get back to you as soon as possible. We're excited to hear from you and answer any questions you may have about solar energy estimation.
+                    {t('contact.getInTouchDescription')}
                   </p>
                   
                   <div className="space-y-6">
@@ -129,33 +131,33 @@ const Contact = () => {
                     
                     <div className="space-y-4">
                       <div>
-                        <Label htmlFor="name">Name</Label>
+                        <Label htmlFor="name">{t('contact.form.name')}</Label>
                         <Input 
                           id="name" 
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          placeholder="Your name" 
+                          placeholder={t('contact.form.name')} 
                           required 
                         />
                       </div>
                       
                       <div>
-                        <Label htmlFor="email">Email</Label>
+                        <Label htmlFor="email">{t('contact.form.email')}</Label>
                         <Input 
                           id="email" 
                           type="email" 
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          placeholder="Your email" 
+                          placeholder={t('contact.form.email')} 
                           required 
                         />
                       </div>
                       
                       <div>
-                        <Label htmlFor="message">Message</Label>
+                        <Label htmlFor="message">{t('contact.form.message')}</Label>
                         <Textarea 
                           id="message" 
-                          placeholder="Your message" 
+                          placeholder={t('contact.form.message')} 
                           value={message}
                           onChange={(e) => setMessage(e.target.value)}
                           className="h-32" 
@@ -174,17 +176,17 @@ const Contact = () => {
                               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                             </svg>
-                            Sending...
+                            {t('contact.form.sending')}
                           </span>
-                        ) : "Send Message"}
+                        ) : t('contact.form.send')}
                       </Button>
                     </div>
                   </form>
                   
                   <div className="mt-8 p-6 bg-blue-50 rounded-lg">
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Frequently Asked Questions</h3>
+                    <h3 className="text-lg font-medium text-gray-900 mb-2">{t('contact.faq')}</h3>
                     <p className="text-gray-600 mb-4">
-                      Need a quick answer? Check our <a href="#" className="text-solar-blue hover:underline">FAQ page</a> for common questions about our solar estimator tool.
+                      {t('contact.faqDescription')}
                     </p>
                   </div>
                 </div>

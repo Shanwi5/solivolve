@@ -1,8 +1,10 @@
 
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
 
   return (
     <footer className="bg-gray-100 pt-12 pb-8">
@@ -11,8 +13,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-lg font-semibold text-solar-blue mb-4">Solar Energy Estimator</h3>
             <p className="text-gray-600 mb-4 max-w-md">
-              Calculate your rooftop's solar potential with our interactive tool. 
-              Make informed decisions about solar panel installation and start saving.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-solar-blue">
@@ -37,17 +38,17 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold text-solar-blue mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-solar-blue mb-4">{t('footer.quickLinks')}</h3>
             <ul className="space-y-2">
-              <li><Link to="/" className="text-gray-600 hover:text-solar-blue">Home</Link></li>
-              <li><Link to="/how-it-works" className="text-gray-600 hover:text-solar-blue">How It Works</Link></li>
-              <li><Link to="/benefits" className="text-gray-600 hover:text-solar-blue">Benefits</Link></li>
-              <li><Link to="/contact" className="text-gray-600 hover:text-solar-blue">Contact</Link></li>
+              <li><Link to="/" className="text-gray-600 hover:text-solar-blue">{t('navbar.home')}</Link></li>
+              <li><Link to="/how-it-works" className="text-gray-600 hover:text-solar-blue">{t('navbar.howItWorks')}</Link></li>
+              <li><Link to="/benefits" className="text-gray-600 hover:text-solar-blue">{t('navbar.benefits')}</Link></li>
+              <li><Link to="/contact" className="text-gray-600 hover:text-solar-blue">{t('navbar.contact')}</Link></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold text-solar-blue mb-4">Contact</h3>
+            <h3 className="text-lg font-semibold text-solar-blue mb-4">{t('footer.contact')}</h3>
             <ul className="space-y-2 text-gray-600">
               <li>123 Solar Street</li>
               <li>Sunnyville, CA 90210</li>
@@ -59,7 +60,7 @@ const Footer = () => {
         
         <div className="mt-8 pt-8 border-t border-gray-200">
           <p className="text-center text-gray-500 text-sm">
-            &copy; {currentYear} Solar Energy Estimator. All rights reserved.
+            &copy; {currentYear} Solar Energy Estimator. {t('footer.rights')}
           </p>
         </div>
       </div>

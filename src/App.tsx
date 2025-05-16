@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import HowItWorks from "./pages/HowItWorks";
 import Benefits from "./pages/Benefits";
 import Contact from "./pages/Contact";
+import "./i18n/i18n"; // Import the i18n configuration
 
 const queryClient = new QueryClient();
 

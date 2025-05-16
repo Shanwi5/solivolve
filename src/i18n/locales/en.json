@@ -1,0 +1,74 @@
+
+{
+  "common": {
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "navbar": {
+    "home": "Home",
+    "howItWorks": "How It Works",
+    "benefits": "Benefits",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Calculate Your Rooftop's",
+    "titleHighlight": "Solar Energy Potential",
+    "description": "Upload your rooftop image, draw the usable area, and instantly see your solar energy generation potential. No GPS or location access required."
+  },
+  "features": {
+    "title": "Powerful Features",
+    "upload": {
+      "title": "Easy Upload",
+      "description": "Simply upload a screenshot or photo of your rooftop from Google Maps or any source."
+    },
+    "draw": {
+      "title": "Draw Your Area",
+      "description": "Use our interactive drawing tool to outline the usable area of your roof for solar panels."
+    },
+    "analysis": {
+      "title": "Instant Analysis",
+      "description": "Get detailed estimates on energy production, savings, and environmental impact."
+    }
+  },
+  "estimator": {
+    "title": "Solar Potential Estimator",
+    "description": "Upload a rooftop image and draw the usable area to get instant estimates of your solar energy potential."
+  },
+  "cta": {
+    "title": "Ready to Harness Solar Power?",
+    "description": "Start your solar journey today by estimating your rooftop's potential with our interactive tool.",
+    "button": "Get Your Solar Estimate"
+  },
+  "footer": {
+    "description": "Calculate your rooftop's solar potential with our interactive tool. Make informed decisions about solar panel installation and start saving.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "button": "Return to Home"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Have questions about our solar estimator? We're here to help! Get in touch with our team for support or more information.",
+    "getInTouch": "Get in Touch",
+    "getInTouchDescription": "Fill out the form and our team will get back to you as soon as possible. We're excited to hear from you and answer any questions you may have about solar energy estimation.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending..."
+    },
+    "faq": "Frequently Asked Questions",
+    "faqDescription": "Need a quick answer? Check our FAQ page for common questions about our solar estimator tool."
+  },
+  "language": {
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German"
+  }
+}
