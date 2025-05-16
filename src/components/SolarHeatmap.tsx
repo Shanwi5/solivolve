@@ -133,93 +133,39 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
           </SelectContent>
         </Select>
       </CardHeader>
-      
       <CardContent>
-        <div className="mb-4">
-          <p className="text-sm text-muted-foreground">
-            {visualizationType === "annual" 
-              ? t("heatmap.annualDescription", "Visualization of estimated annual solar energy production across your roof surface in kWh.")
-              : t("heatmap.description", "Visual representation of solar energy potential across your roof surface.")}
-          </p>
-        </div>
-        
-        <div className="h-[250px] w-full">
-          <ChartContainer
-            config={{
-              high: {
-                label: "High",
-                color: "#9b87f5"
-              },
-              medium: {
-                label: "Medium",
-                color: "#FEF7CD"
-              },
-              low: {
-                label: "Low",
-                color: "#FFDEE2"
-              }
+        <div className="h-[250px] w-full overflow-auto">
+          <div
+            className="grid bg-white"
+            style={{
+              display: "grid",
+              gridTemplateColumns: `repeat(${Math.ceil(Math.sqrt(data.length))}, 20px)`,
+              gridAutoRows: "20px",
+              gap: "2px",
+              width: "fit-content",
+              margin: "0 auto",
             }}
           >
-            <ResponsiveContainer width="100%" height="100%">
-              <ScatterChart
-                margin={{ top: 10, right: 30, left: 5, bottom: 30 }}
+            {data.map((point, idx) => (
+              <div
+                key={idx}
+                title={`(${point.x}, ${point.y}) = ${point.value.toFixed(1)}%`}
+                style={{
+                  backgroundColor: getColor(point.value),
+                  width: "20px",
+                  height: "20px",
+                  textAlign: "center",
+                  fontSize: "10px",
+                  color: "#000",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
               >
-                <XAxis 
-                  type="number" 
-                  dataKey="x" 
-                  name="X" 
-                  tickCount={5} 
-                  tickFormatter={(value) => `${value}`} 
-                  label={{ 
-                    value: t("heatmap.eastWest", "East-West"), 
-                    position: "bottom" 
-                  }}
-                />
-                <YAxis 
-                  type="number" 
-                  dataKey="y" 
-                  name="Y" 
-                  tickCount={5} 
-                  tickFormatter={(value) => `${value}`} 
-                  label={{ 
-                    value: t("heatmap.northSouth", "North-South"), 
-                    angle: -90, 
-                    position: "left" 
-                  }}
-                />
-                <ZAxis 
-                  type="number" 
-                  dataKey="value" 
-                  range={[100, 800]} 
-                  name={getLabelByType()} 
-                />
-                <Tooltip 
-                  content={({ active, payload }) => {
-                    if (active && payload && payload.length) {
-                      const data = payload[0].payload as HeatmapPoint;
-                      return (
-                        <div className="bg-background border rounded-lg shadow-sm p-2 text-xs">
-                          <p className="font-medium">{getLabelByType()}</p>
-                          <p>{t("heatmap.value", "Value")}: {data.value.toFixed(1)}%</p>
-                          {data.annualEnergy && visualizationType === "annual" && (
-                            <p>{t("heatmap.annualEnergy", "Annual Energy")}: {data.annualEnergy} kWh</p>
-                          )}
-                          <p>{t("heatmap.position", "Position")}: ({data.x}, {data.y})</p>
-                        </div>
-                      );
-                    }
-                    return null;
-                  }}
-                />
-                <Legend />
-                <Scatter name={getLabelByType()} data={data}>
-                  {data.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={getColor(entry.value)} />
-                  ))}
-                </Scatter>
-              </ScatterChart>
-            </ResponsiveContainer>
-          </ChartContainer>
+                {Math.round(point.value)}
+              </div>
+            ))}
+          </div>
         </div>
         
         <div className="mt-4 grid grid-cols-5 gap-1">
@@ -250,4 +196,5 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
 };
 
 export default SolarHeatmap;
+
 
