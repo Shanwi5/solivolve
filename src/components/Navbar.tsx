@@ -18,7 +18,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <Sun className="h-8 w-8 text-solar-yellow animate-pulse-grow" />
-              <span className="ml-2 text-xl font-bold text-solar-blue">SolarEstimator</span>
+              <span className="ml-2 text-xl font-bold text-solar-blue">Solivolve</span>
             </Link>
           </div>
           
