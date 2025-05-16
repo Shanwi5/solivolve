@@ -181,15 +181,15 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
             }}
           >
             {data.map((point, idx) => (
-              <div 
-              className="grid mt-4"
-              style={{
-                display: "grid",
-                gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
-                gridAutoRows: "30px", // increased from 20px
-                gap: "3px"
-              }}
-            >
+            <div 
+                className="grid mt-4"
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: `repeat(${Math.ceil(Math.sqrt(data.length))}, 1fr)`,
+                  gridAutoRows: "30px", // increased from 20px
+                  gap: "3px"
+                }}
+              >
               {data.map((point, idx) => (
                 <div
                   key={idx}
