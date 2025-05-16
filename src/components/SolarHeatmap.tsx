@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -144,7 +143,7 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
           </p>
         </div>
         
-        <div className="h-[350px] w-full">
+        <div className="h-[250px] w-full">
           <ChartContainer
             config={{
               high: {
@@ -251,3 +250,4 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
 };
 
 export default SolarHeatmap;
+
