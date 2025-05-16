@@ -56,6 +56,46 @@ const indianRegions: Region[] = [
     taxCredit: 0.20,
     type: 'state'
   },
+  {
+    id: "dl",
+    name: "Delhi",
+    electricityRate: 0.13,
+    solarSubsidy: 0.35,
+    taxCredit: 0.25,
+    type: 'state'
+  },
+  {
+    id: "hr",
+    name: "Haryana",
+    electricityRate: 0.11,
+    solarSubsidy: 0.30,
+    taxCredit: 0.20,
+    type: 'state'
+  },
+  {
+    id: "pb",
+    name: "Punjab",
+    electricityRate: 0.10,
+    solarSubsidy: 0.35,
+    taxCredit: 0.20,
+    type: 'state'
+  },
+  {
+    id: "up",
+    name: "Uttar Pradesh",
+    electricityRate: 0.09,
+    solarSubsidy: 0.30,
+    taxCredit: 0.20,
+    type: 'state'
+  },
+  {
+    id: "mp",
+    name: "Madhya Pradesh",
+    electricityRate: 0.10,
+    solarSubsidy: 0.35,
+    taxCredit: 0.20,
+    type: 'state'
+  },
   // Districts for Maharashtra
   {
     id: "mh-mumbai",
@@ -70,6 +110,15 @@ const indianRegions: Region[] = [
     id: "mh-pune",
     name: "Pune",
     electricityRate: 0.12,
+    solarSubsidy: 0.30,
+    taxCredit: 0.20,
+    type: 'district',
+    parentId: 'mh'
+  },
+  {
+    id: "mh-nagpur",
+    name: "Nagpur",
+    electricityRate: 0.11,
     solarSubsidy: 0.30,
     taxCredit: 0.20,
     type: 'district',
@@ -94,6 +143,15 @@ const indianRegions: Region[] = [
     type: 'district',
     parentId: 'ka'
   },
+  {
+    id: "ka-hubli",
+    name: "Hubli",
+    electricityRate: 0.10,
+    solarSubsidy: 0.25,
+    taxCredit: 0.20,
+    type: 'district',
+    parentId: 'ka'
+  },
   // Districts for Tamil Nadu
   {
     id: "tn-chennai",
@@ -112,6 +170,91 @@ const indianRegions: Region[] = [
     taxCredit: 0.20,
     type: 'district',
     parentId: 'tn'
+  },
+  {
+    id: "tn-madurai",
+    name: "Madurai",
+    electricityRate: 0.10,
+    solarSubsidy: 0.30,
+    taxCredit: 0.20,
+    type: 'district',
+    parentId: 'tn'
+  },
+  // Districts for Gujarat
+  {
+    id: "gj-ahmedabad",
+    name: "Ahmedabad",
+    electricityRate: 0.12,
+    solarSubsidy: 0.35,
+    taxCredit: 0.20,
+    type: 'district',
+    parentId: 'gj'
+  },
+  {
+    id: "gj-surat",
+    name: "Surat",
+    electricityRate: 0.11,
+    solarSubsidy: 0.35,
+    taxCredit: 0.20,
+    type: 'district',
+    parentId: 'gj'
+  },
+  // Districts for Rajasthan
+  {
+    id: "rj-jaipur",
+    name: "Jaipur",
+    electricityRate: 0.10,
+    solarSubsidy: 0.40,
+    taxCredit: 0.20,
+    type: 'district',
+    parentId: 'rj'
+  },
+  {
+    id: "rj-jodhpur",
+    name: "Jodhpur",
+    electricityRate: 0.09,
+    solarSubsidy: 0.40,
+    taxCredit: 0.20,
+    type: 'district',
+    parentId: 'rj'
+  },
+  // Districts for Delhi
+  {
+    id: "dl-newdelhi",
+    name: "New Delhi",
+    electricityRate: 0.14,
+    solarSubsidy: 0.35,
+    taxCredit: 0.25,
+    type: 'district',
+    parentId: 'dl'
+  },
+  {
+    id: "dl-gurgaon",
+    name: "Gurgaon",
+    electricityRate: 0.13,
+    solarSubsidy: 0.35,
+    taxCredit: 0.25,
+    type: 'district',
+    parentId: 'dl'
+  },
+  // Districts for Haryana
+  {
+    id: "hr-faridabad",
+    name: "Faridabad",
+    electricityRate: 0.12,
+    solarSubsidy: 0.30,
+    taxCredit: 0.20,
+    type: 'district',
+    parentId: 'hr'
+  },
+  {
+    id: "hr-panchkula",
+    name: "Panchkula",
+    electricityRate: 0.11,
+    solarSubsidy: 0.30,
+    taxCredit: 0.20,
+    type: 'district',
+    parentId: 'hr'
   }
 ];
 
@@ -222,4 +365,3 @@ const RegionSelector: React.FC<RegionSelectorProps> = ({ onRegionChange }) => {
 };
 
 export default RegionSelector;
-
