@@ -69,7 +69,7 @@ const WeatherReport: React.FC<WeatherReportProps> = ({ region }) => {
   return (
     <Card className="mt-6">
       <CardHeader>
-        <CardTitle>7-Day Weather Forecast for {weatherData.location}</CardTitle>
+        <CardTitle>7-Day Weather Forecast </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="mb-6 flex flex-col md:flex-row items-center gap-6 p-4 bg-blue-50 rounded-lg">
