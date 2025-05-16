@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { SolarResults, SolarInputs } from "@/utils/solarCalculator";
 import { useToast } from "@/hooks/use-toast";
+import jsPDF from 'jspdf';
 
 interface PdfGeneratorProps {
   results: SolarResults;
@@ -13,9 +14,21 @@ const PdfGenerator: React.FC<PdfGeneratorProps> = ({ results, formData }) => {
   const { toast } = useToast();
 
   const generatePDF = () => {
-    // In a real application, we would use a PDF library like jspdf or pdfmake
-    // For this demo, we'll create a simple text representation and download it
-    
+    const pdf = new jsPDF();
+    const lineHeight = 10;
+    let y = 20;
+
+    // Helper function to add text and increment y position
+    const addLine = (text: string, isBold = false) => {
+      if (isBold) {
+        pdf.setFont('helvetica', 'bold');
+      } else {
+        pdf.setFont('helvetica', 'normal');
+      }
+      pdf.text(text, 20, y);
+      y += lineHeight;
+    };
+
     // Format currency
     const formatCurrency = (value: number) => {
       return new Intl.NumberFormat('en-US', {
@@ -25,62 +38,49 @@ const PdfGenerator: React.FC<PdfGeneratorProps> = ({ results, formData }) => {
       }).format(value);
     };
 
-    // Create text content
-    const content = `
-SOLIVOLVE SOLAR CALCULATION REPORT
-===================================
-Generated on: ${new Date().toLocaleDateString()}
-
-LOCATION INFORMATION
--------------------
-Location: ${formData.location}
-Roof Area: ${formData.roofArea} m²
-Monthly Electricity Usage: ${formData.electricityUsage} kWh
-Roof Angle: ${formData.roofAngle || 'Not specified'} degrees
-Roof Shading: ${formData.shading || 'Not specified'} %
-
-SOLAR POTENTIAL RESULTS
-----------------------
-System Size: ${results.systemSize.toFixed(2)} kW
-Number of Panels: ${results.panelsRequired}
-Annual Energy Production: ${Math.round(results.annualEnergyProduction).toLocaleString()} kWh
-Monthly Savings: ${formatCurrency(results.monthlySavings)}
-Payback Period: ${results.paybackPeriod.toFixed(1)} years
-CO₂ Reduction: ${Math.round(results.co2Reduction).toLocaleString()} kg per year
-Lifetime Savings: ${formatCurrency(results.lifetimeSavings)} (over 25 years)
-
-ENVIRONMENTAL IMPACT
-------------------
-Annual CO₂ Savings: ${Math.round(results.co2Reduction).toLocaleString()} kg
-Equivalent to Planting: ${Math.round(results.co2Reduction / 21)} trees
-25-Year CO₂ Savings: ${Math.round(results.co2Reduction * 25).toLocaleString()} kg
-
-This report is an estimate based on the information provided and typical solar conditions.
-Actual results may vary based on installation details, weather patterns, and energy usage.
-
-For more information, visit solivolve.com
-    `;
-
-    // Create a Blob with the text content
-    const blob = new Blob([content], { type: 'text/plain' });
+    // Add content to PDF
+    pdf.setFontSize(20);
+    addLine('SOLIVOLVE SOLAR CALCULATION REPORT', true);
     
-    // Create a download link
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `Solivolve_Solar_Report_${formData.location.replace(/,?\s+/g, '_')}.txt`;
-    
-    // Trigger the download
-    document.body.appendChild(link);
-    link.click();
-    
-    // Clean up
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    pdf.setFontSize(12);
+    addLine(`Generated on: ${new Date().toLocaleDateString()}`);
+    y += 5;
+
+    addLine('LOCATION INFORMATION', true);
+    addLine(`Location: ${formData.location}`);
+    addLine(`Roof Area: ${formData.roofArea} m²`);
+    addLine(`Monthly Electricity Usage: ${formData.electricityUsage} kWh`);
+    addLine(`Roof Angle: ${formData.roofAngle || 'Not specified'} degrees`);
+    addLine(`Roof Shading: ${formData.shading || 'Not specified'} %`);
+    y += 5;
+
+    addLine('SOLAR POTENTIAL RESULTS', true);
+    addLine(`System Size: ${results.systemSize.toFixed(2)} kW`);
+    addLine(`Number of Panels: ${results.panelsRequired}`);
+    addLine(`Annual Energy Production: ${Math.round(results.annualEnergyProduction).toLocaleString()} kWh`);
+    addLine(`Monthly Savings: ${formatCurrency(results.monthlySavings)}`);
+    addLine(`Payback Period: ${results.paybackPeriod.toFixed(1)} years`);
+    addLine(`Lifetime Savings: ${formatCurrency(results.lifetimeSavings)} (over 25 years)`);
+    y += 5;
+
+    addLine('ENVIRONMENTAL IMPACT', true);
+    addLine(`Annual CO₂ Savings: ${Math.round(results.co2Reduction).toLocaleString()} kg`);
+    addLine(`Equivalent to Planting: ${Math.round(results.co2Reduction / 21)} trees`);
+    addLine(`25-Year CO₂ Savings: ${Math.round(results.co2Reduction * 25).toLocaleString()} kg`);
+    y += 10;
+
+    pdf.setFontSize(10);
+    pdf.setTextColor(100);
+    addLine('This report is an estimate based on the information provided and typical solar conditions.');
+    addLine('Actual results may vary based on installation details, weather patterns, and energy usage.');
+    addLine('For more information, visit solivolve.com');
+
+    // Save the PDF
+    pdf.save(`Solivolve_Solar_Report_${formData.location.replace(/,?\s+/g, '_')}.pdf`);
     
     toast({
       title: "Report Downloaded",
-      description: "Your solar estimate report has been downloaded.",
+      description: "Your solar estimate report has been downloaded as PDF.",
     });
   };
 
