@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Heatmap as HeatmapIcon } from "lucide-react";
+import { ChartPie } from "lucide-react";
 import {
   ChartContainer,
   ChartTooltip,
@@ -30,11 +30,12 @@ type HeatmapPoint = {
   y: number;
   value: number;
   name: string;
+  annualEnergy?: number;
 };
 
 const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
   const { t } = useTranslation();
-  const [visualizationType, setVisualizationType] = useState<"potential" | "efficiency" | "cost">("potential");
+  const [visualizationType, setVisualizationType] = useState<"potential" | "efficiency" | "cost" | "annual">("annual");
   const [data, setData] = useState<HeatmapPoint[]>([]);
 
   // Generate heatmap data based on roof area and visualization type
@@ -49,9 +50,16 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
       for (let x = 0; x < gridSize; x++) {
         for (let y = 0; y < gridSize; y++) {
           let value = 0;
+          let annualEnergy = 0;
           
           // Different algorithms for different visualization types
           switch(visualizationType) {
+            case "annual":
+              // Annual energy production patterns
+              value = 80 - (Math.abs(x - gridSize/2) * 5) - (Math.abs(y - gridSize/2) * 3);
+              // Calculate annual kWh based on position and value
+              annualEnergy = (value / 100) * 1200 * (roofArea / (gridSize * gridSize));
+              break;
             case "potential":
               // Higher values in center, decreasing toward edges
               value = 100 - (Math.abs(x - gridSize/2) + Math.abs(y - gridSize/2)) * 10;
@@ -73,7 +81,8 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
             x: x * 10, 
             y: y * 10,
             value,
-            name: `Point ${x},${y}`
+            name: `Point ${x},${y}`,
+            annualEnergy: annualEnergy ? Math.round(annualEnergy) : undefined
           });
         }
       }
@@ -86,8 +95,8 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
 
   // Map value to color
   const getColor = (value: number) => {
-    if (value > 80) return "#0EA5E9"; // High potential - bright blue
-    if (value > 60) return "#33C3F0"; // Good potential - sky blue
+    if (value > 80) return "#9b87f5"; // High potential - bright purple
+    if (value > 60) return "#7E69AB"; // Good potential - medium purple
     if (value > 40) return "#FEF7CD"; // Medium potential - soft yellow
     if (value > 20) return "#FEC6A1"; // Low potential - soft orange
     return "#FFDEE2"; // Very low potential - soft pink
@@ -95,6 +104,7 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
 
   const getLabelByType = () => {
     switch(visualizationType) {
+      case "annual": return t("heatmap.annualEnergy", "Annual Energy Production");
       case "potential": return t("heatmap.solarPotential", "Solar Potential");
       case "efficiency": return t("heatmap.efficiency", "Panel Efficiency");
       case "cost": return t("heatmap.costEffectiveness", "Cost Effectiveness");
@@ -106,7 +116,7 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <div className="flex items-center gap-2">
-          <HeatmapIcon className="h-5 w-5" />
+          <ChartPie className="h-5 w-5" />
           <CardTitle className="text-lg">{t("heatmap.title", "Solar Heatmap Analysis")}</CardTitle>
         </div>
         <Select 
@@ -117,6 +127,7 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
             <SelectValue placeholder={t("heatmap.selectVisualization", "Select view")} />
           </SelectTrigger>
           <SelectContent>
+            <SelectItem value="annual">{t("heatmap.annualEnergy", "Annual Energy Production")}</SelectItem>
             <SelectItem value="potential">{t("heatmap.solarPotential", "Solar Potential")}</SelectItem>
             <SelectItem value="efficiency">{t("heatmap.efficiency", "Panel Efficiency")}</SelectItem>
             <SelectItem value="cost">{t("heatmap.costEffectiveness", "Cost Effectiveness")}</SelectItem>
@@ -127,7 +138,9 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
       <CardContent>
         <div className="mb-4">
           <p className="text-sm text-muted-foreground">
-            {t("heatmap.description", "Visual representation of solar energy potential across your roof surface.")}
+            {visualizationType === "annual" 
+              ? t("heatmap.annualDescription", "Visualization of estimated annual solar energy production across your roof surface in kWh.")
+              : t("heatmap.description", "Visual representation of solar energy potential across your roof surface.")}
           </p>
         </div>
         
@@ -136,7 +149,7 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
             config={{
               high: {
                 label: "High",
-                color: "#0EA5E9"
+                color: "#9b87f5"
               },
               medium: {
                 label: "Medium",
@@ -189,6 +202,9 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
                         <div className="bg-background border rounded-lg shadow-sm p-2 text-xs">
                           <p className="font-medium">{getLabelByType()}</p>
                           <p>{t("heatmap.value", "Value")}: {data.value.toFixed(1)}%</p>
+                          {data.annualEnergy && visualizationType === "annual" && (
+                            <p>{t("heatmap.annualEnergy", "Annual Energy")}: {data.annualEnergy} kWh</p>
+                          )}
                           <p>{t("heatmap.position", "Position")}: ({data.x}, {data.y})</p>
                         </div>
                       );
@@ -221,11 +237,11 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
             <span>50%</span>
           </div>
           <div className="text-center text-xs">
-            <div className="h-2 bg-[#33C3F0] w-full"></div>
+            <div className="h-2 bg-[#7E69AB] w-full"></div>
             <span>75%</span>
           </div>
           <div className="text-center text-xs">
-            <div className="h-2 bg-[#0EA5E9] w-full"></div>
+            <div className="h-2 bg-[#9b87f5] w-full"></div>
             <span>100%</span>
           </div>
         </div>

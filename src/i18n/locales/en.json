@@ -103,10 +103,12 @@
   "heatmap": {
     "title": "Solar Heatmap Analysis",
     "description": "Visual representation of solar energy potential across your roof surface.",
+    "annualDescription": "Visualization of estimated annual solar energy production across your roof surface in kWh.",
     "selectVisualization": "Select view",
     "solarPotential": "Solar Potential",
     "efficiency": "Panel Efficiency",
     "costEffectiveness": "Cost Effectiveness",
+    "annualEnergy": "Annual Energy Production",
     "eastWest": "East-West",
     "northSouth": "North-South",
     "value": "Value",
