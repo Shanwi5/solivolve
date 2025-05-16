@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
@@ -7,6 +6,7 @@ import DrawingCanvas from "@/components/DrawingCanvas";
 import EnergyDashboard from "@/components/EnergyDashboard";
 import RegionSelector from "@/components/RegionSelector";
 import WeatherReport from "@/components/WeatherReport";
+import SolarHeatmap from "@/components/SolarHeatmap";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
@@ -127,7 +127,7 @@ const Index = () => {
               <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                 <div className="w-12 h-12 bg-solar-green/10 rounded-full flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-solar-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2m0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{t('features.analysis.title')}</h3>
@@ -163,7 +163,10 @@ const Index = () => {
               )}
               
               {roofArea && (
-                <EnergyDashboard roofArea={roofArea} />
+                <>
+                  <EnergyDashboard roofArea={roofArea} />
+                  <SolarHeatmap roofArea={roofArea} />
+                </>
               )}
             </div>
           </div>
