@@ -1,6 +1,8 @@
 
+import { useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
 
 interface Region {
   id: string;
@@ -74,26 +76,34 @@ interface RegionSelectorProps {
 }
 
 const RegionSelector: React.FC<RegionSelectorProps> = ({ onRegionChange }) => {
+  const [selectedRegionId, setSelectedRegionId] = useState("ca");
+  const { t } = useTranslation();
+  
+  const selectedRegion = regions.find(r => r.id === selectedRegionId) || regions[0];
+
+  const handleRegionChange = (value: string) => {
+    setSelectedRegionId(value);
+    const region = regions.find(r => r.id === value);
+    if (region) onRegionChange(region);
+  };
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg">Select Your Region</CardTitle>
+        <CardTitle className="text-lg">{t('regionSelector.title', 'Select Your Region')}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <p className="text-sm text-gray-500 mb-2">
-              Choose your location to get accurate electricity rates and subsidy information
+              {t('regionSelector.description', 'Choose your location to get accurate electricity rates and subsidy information')}
             </p>
             <Select 
-              defaultValue="ca"
-              onValueChange={(value) => {
-                const selectedRegion = regions.find(r => r.id === value);
-                if (selectedRegion) onRegionChange(selectedRegion);
-              }}
+              defaultValue={selectedRegionId}
+              onValueChange={handleRegionChange}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select region" />
+                <SelectValue placeholder={t('regionSelector.placeholder', 'Select region')} />
               </SelectTrigger>
               <SelectContent>
                 {regions.map(region => (
@@ -107,18 +117,18 @@ const RegionSelector: React.FC<RegionSelectorProps> = ({ onRegionChange }) => {
           
           <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="bg-blue-50 p-3 rounded-md">
-              <p className="text-xs text-gray-500">Electricity Rate</p>
-              <p className="text-xl font-semibold text-solar-blue">${regions[0].electricityRate.toFixed(2)}/kWh</p>
+              <p className="text-xs text-gray-500">{t('regionSelector.electricityRate', 'Electricity Rate')}</p>
+              <p className="text-xl font-semibold text-solar-blue">${selectedRegion.electricityRate.toFixed(2)}/kWh</p>
             </div>
             
             <div className="bg-green-50 p-3 rounded-md">
-              <p className="text-xs text-gray-500">Solar Subsidy</p>
-              <p className="text-xl font-semibold text-solar-green">${regions[0].solarSubsidy.toFixed(2)}/kWh</p>
+              <p className="text-xs text-gray-500">{t('regionSelector.solarSubsidy', 'Solar Subsidy')}</p>
+              <p className="text-xl font-semibold text-solar-green">${selectedRegion.solarSubsidy.toFixed(2)}/kWh</p>
             </div>
             
             <div className="bg-yellow-50 p-3 rounded-md">
-              <p className="text-xs text-gray-500">Tax Credit</p>
-              <p className="text-xl font-semibold text-solar-yellow">{(regions[0].taxCredit * 100).toFixed(0)}%</p>
+              <p className="text-xs text-gray-500">{t('regionSelector.taxCredit', 'Tax Credit')}</p>
+              <p className="text-xl font-semibold text-solar-yellow">{(selectedRegion.taxCredit * 100).toFixed(0)}%</p>
             </div>
           </div>
         </div>

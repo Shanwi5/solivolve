@@ -70,5 +70,34 @@
     "es": "Spanish",
     "fr": "French",
     "de": "German"
+  },
+  "weather": {
+    "title": "Weather Forecast",
+    "currentWeather": "Current Weather",
+    "forecast": "7-Day Forecast",
+    "humidity": "Humidity",
+    "pressure": "Pressure",
+    "temperature": "Temperature",
+    "condition": {
+      "sunny": "Sunny",
+      "cloudy": "Cloudy",
+      "partlyCloudy": "Partly Cloudy",
+      "rainy": "Rainy",
+      "stormy": "Stormy",
+      "snowy": "Snowy",
+      "foggy": "Foggy",
+      "dry": "Dry",
+      "humid": "Humid",
+      "hot": "Hot",
+      "cool": "Cool"
+    }
+  },
+  "regionSelector": {
+    "title": "Select Your Region",
+    "description": "Choose your location to get accurate electricity rates, subsidy information and local weather forecast",
+    "placeholder": "Select region",
+    "electricityRate": "Electricity Rate",
+    "solarSubsidy": "Solar Subsidy",
+    "taxCredit": "Tax Credit"
   }
 }

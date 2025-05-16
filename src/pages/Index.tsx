@@ -6,15 +6,31 @@ import ImageUpload from "@/components/ImageUpload";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import EnergyDashboard from "@/components/EnergyDashboard";
 import RegionSelector from "@/components/RegionSelector";
+import WeatherReport from "@/components/WeatherReport";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import { useTranslation } from "react-i18next";
 
+interface Region {
+  id: string;
+  name: string;
+  electricityRate: number;
+  solarSubsidy: number;
+  taxCredit: number;
+}
+
 const Index = () => {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [roofArea, setRoofArea] = useState<number | null>(null);
   const [showEstimator, setShowEstimator] = useState(false);
+  const [selectedRegion, setSelectedRegion] = useState<Region>({
+    id: "ca",
+    name: "California",
+    electricityRate: 0.23,
+    solarSubsidy: 0.05,
+    taxCredit: 0.30
+  });
   const { t } = useTranslation();
   
   const handleImageUpload = (imageUrl: string) => {
@@ -24,6 +40,10 @@ const Index = () => {
   
   const handleAreaCalculated = (area: number) => {
     setRoofArea(area);
+  };
+  
+  const handleRegionChange = (region: Region) => {
+    setSelectedRegion(region);
   };
   
   const scrollToEstimator = () => {
@@ -128,7 +148,10 @@ const Index = () => {
             </p>
             
             <div className="space-y-6">
-              <RegionSelector onRegionChange={() => {}} />
+              <RegionSelector onRegionChange={handleRegionChange} />
+              
+              {/* Weather Report based on selected location */}
+              <WeatherReport region={selectedRegion.id} />
               
               <ImageUpload onImageUploaded={handleImageUpload} />
               
