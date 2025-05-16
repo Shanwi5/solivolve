@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ChartPie } from "lucide-react";
+import DownloadPDF from "@/components/downloadpdf";
 import {
   ChartContainer,
   ChartTooltip,
@@ -189,6 +190,9 @@ const SolarHeatmap: React.FC<SolarHeatmapProps> = ({ roofArea }) => {
             <div className="h-2 bg-[#9b87f5] w-full"></div>
             <span>100%</span>
           </div>
+        </div>
+        <div className="mt-4">
+          <DownloadPDF data={data} roofArea={roofArea} />
         </div>
       </CardContent>
     </Card>
